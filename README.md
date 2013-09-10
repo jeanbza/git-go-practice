@@ -1,4 +1,6 @@
-git-go-projecteuler
-===================
+git-projecteuler
+================
 
-Project Euler in golang
+Project Euler programming challenges in golang.
+
+http://projecteuler.net/
