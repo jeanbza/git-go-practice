@@ -34,9 +34,6 @@ func getNumDivisors(someNum int) (int) {
     for i := 1; i <= int(math.Sqrt(float64(someNum))); i ++ {
         if (someNum % i == 0) {
             getNumDivisors += 2
-            if (someNum == 12) {
-                fmt.Println(i)
-            }
         }
     }
 
