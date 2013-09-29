@@ -6,16 +6,16 @@ import (
 )
 
 func main() {
-    targetNum := 1
-    targetNumFactors := 500
-    numFactorsAmnt := 0
+    currentTriangleNum := 1
+    targetNumDivisors := 500
+    numDivisors := 0
     
-    for i := 1; numFactorsAmnt < targetNumFactors; i++ {
-        targetNum = generateTriangleNumber(i)
-        numFactorsAmnt = numFactors(targetNum)
+    for i := 1; numDivisors < targetNumDivisors; i++ {
+        currentTriangleNum = generateTriangleNumber(i)
+        numDivisors = getNumDivisors(currentTriangleNum)
     }
 
-    fmt.Printf("Smallest number with at least %v factors: %v\n\n", targetNumFactors, targetNum)
+    fmt.Printf("Smallest number with at least %v factors: %v\n\n", targetNumDivisors, currentTriangleNum)
 }
 
 func generateTriangleNumber(someNum int) (int) {
@@ -28,12 +28,12 @@ func generateTriangleNumber(someNum int) (int) {
     return triangleNum
 }
 
-func numFactors(someNum int) (int) {
-    numFactors := 0
+func getNumDivisors(someNum int) (int) {
+    getNumDivisors := 0
 
     for i := 1; i <= int(math.Sqrt(float64(someNum))); i ++ {
         if (someNum % i == 0) {
-            numFactors += 2
+            getNumDivisors += 2
             if (someNum == 12) {
                 fmt.Println(i)
             }
@@ -41,10 +41,10 @@ func numFactors(someNum int) (int) {
     }
 
     if (isPerfectSquare(someNum)) {
-        numFactors --
+        getNumDivisors --
     }
 
-    return numFactors
+    return getNumDivisors
 }
 
 func isPerfectSquare(someInt int) (bool) {
