@@ -24,6 +24,13 @@ func main() {
                 }
             }
 
+            if (x+3 < 20 && y-3 >= 0) {
+                product = arr[x][y]*arr[x+1][y-1]*arr[x+2][y-2]*arr[x+3][y-3]
+                if (product > largest) {
+                    largest = product
+                }
+            }
+
             if (x+3 < 20 && y+3 < 20) {
                 product = arr[x][y]*arr[x+1][y+1]*arr[x+2][y+2]*arr[x+3][y+3]
                 if (product > largest) {
@@ -33,5 +40,5 @@ func main() {
         }
     }
 
-    fmt.Printf("Largest: %v\n", largest)
+    fmt.Printf("Largest: %v\n   ", largest)
 }
