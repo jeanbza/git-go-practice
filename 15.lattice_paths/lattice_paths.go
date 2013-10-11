@@ -1,30 +1,22 @@
 package main
 
-import "fmt"
-
-type loc struct {
-    x, y int
-}
+import (
+    "fmt"
+    "math"
+)
 
 func main() {
-    myLoc := loc{0, 0}
-    total := 0
-    traverse(myLoc, 20, &total)
-    fmt.Println(total)
+    sum := factorial((float64(2*20)))/math.Pow((factorial(20)),2)
+
+    fmt.Println(sum)
 }
 
-func traverse(curLoc loc, maxSize int, total *int) {
-    fmt.Println(curLoc)
+func factorial(someNum float64) (float64) {
+    product := float64(1)
 
-    if (curLoc.x == maxSize && curLoc.y == maxSize) {
-        *total += 1
+    for i := float64(1); i <= someNum; i++ {
+        product *= i
     }
 
-    if (curLoc.x < maxSize) {
-        traverse(loc{curLoc.x+1, curLoc.y}, maxSize, total)
-    }
-
-    if (curLoc.y < maxSize) {
-        traverse(loc{curLoc.x, curLoc.y+1}, maxSize, total)
-    }
+    return product
 }
