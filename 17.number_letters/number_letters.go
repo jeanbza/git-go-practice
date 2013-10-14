@@ -54,10 +54,11 @@ func main() {
     hundreds[9] = "ninehundred"
     thousands[1] = "onethousand"
 
+    var word bytes.Buffer
     first := 0
     second := 0
     third := 0
-    var word bytes.Buffer
+    sum := 0
 
     for i := 1; i <= 1000; i++ {
         word.Reset()
@@ -87,5 +88,8 @@ func main() {
         word.WriteString(tens[second])
         word.WriteString(ones[third])
         fmt.Println(word.String())
+        sum += len(word.String())
     }
+
+    fmt.Printf("The sum of the digits is: %v\n", sum)
 }
