@@ -64,8 +64,6 @@ func main() {
     for i := 1; i <= 1000; i++ {
         word.Reset()
 
-        fmt.Println("")
-        fmt.Println(i)
         first = ((i/100)%10)
 
         if ((i/10)%10 < 2) {
@@ -89,9 +87,6 @@ func main() {
         word.WriteString(tens[second])
         word.WriteString(ones[third])
         wordLen = len(word.String())
-
-        fmt.Println(word.String())
-        fmt.Println(wordLen)
 
         sum += wordLen
     }
