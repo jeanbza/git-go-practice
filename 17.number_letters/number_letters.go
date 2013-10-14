@@ -51,31 +51,55 @@ func main() {
     hundreds[9] = "ninehundred"
     thousands[1] = "onethousand"
 
-    for i := 1; i <= 120; i++ {
+    first := 0
+    second := 0
+    third := 0
+
+    for i := 1; i <= 1000; i++ {
         fmt.Println("")
         fmt.Println(i)
-        fmt.Println((i/100)%10)
-        fmt.Println((i/10)%10)
-        fmt.Println(i%10)
+        first = ((i/100)%10)
 
-        if (i/100 > 0 && (i/100)%10 != 0) {
-            fmt.Printf("%v", hundreds[(i/100)%10])
-        }        
-
-        if (i >= 20 && i/10 > 0 && (i/10)%10 != 0) {
-            if (i >= 100) {
-                fmt.Printf("%v", "and")
-            }
-
-            fmt.Printf("%v", tens[(i/10)%10])
-        }
-
-        if (i < 20) {
-            fmt.Println(ones[i%20])
+        if ((i/10)%10 < 2) {
+            second = 0
+            third = i%20
         } else {
-            if (i%10 != 0) {
-                fmt.Println(ones[i%10])
-            }
+            second = (i/10)%10
+            third = i%10
         }
+
+        if (i == 1000) {
+            fmt.Print("onethousands")
+        }
+
+        fmt.Print(hundreds[first])
+
+        if (first > 0 && second > 0) {
+            fmt.Print("and")
+        }
+
+        fmt.Print(tens[second])
+        fmt.Print(ones[third])
+        fmt.Println()
+
+        // if (first > 0) {
+        //     fmt.Printf("%v", hundreds[first])
+
+        //     if (second != 0 && third != 0) {
+        //         fmt.Printf("%v", "and")
+        //     }
+        // }
+
+        // j /= 10
+
+        // if (j >= 20) {
+        //     fmt.Printf("%v", tens[j%10])
+        // }
+
+        // j /= 10
+
+        // if (j > 0) {
+        //     fmt.Printf("%v", ones[j])
+        // }
     }
 }
