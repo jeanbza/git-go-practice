@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+    "fmt"
+    "bytes"
+)
 
 var ones map[int]string
 var tens map[int]string
@@ -54,8 +57,11 @@ func main() {
     first := 0
     second := 0
     third := 0
+    var word bytes.Buffer
 
     for i := 1; i <= 1000; i++ {
+        word.Reset()
+
         fmt.Println("")
         fmt.Println(i)
         first = ((i/100)%10)
@@ -69,37 +75,17 @@ func main() {
         }
 
         if (i == 1000) {
-            fmt.Print("onethousands")
+            word.WriteString("onethousand")
         }
 
-        fmt.Print(hundreds[first])
+        word.WriteString(hundreds[first])
 
         if (first > 0 && second > 0) {
-            fmt.Print("and")
+            word.WriteString("and")
         }
 
-        fmt.Print(tens[second])
-        fmt.Print(ones[third])
-        fmt.Println()
-
-        // if (first > 0) {
-        //     fmt.Printf("%v", hundreds[first])
-
-        //     if (second != 0 && third != 0) {
-        //         fmt.Printf("%v", "and")
-        //     }
-        // }
-
-        // j /= 10
-
-        // if (j >= 20) {
-        //     fmt.Printf("%v", tens[j%10])
-        // }
-
-        // j /= 10
-
-        // if (j > 0) {
-        //     fmt.Printf("%v", ones[j])
-        // }
+        word.WriteString(tens[second])
+        word.WriteString(ones[third])
+        fmt.Println(word.String())
     }
 }
