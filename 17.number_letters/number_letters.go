@@ -59,6 +59,7 @@ func main() {
     second := 0
     third := 0
     sum := 0
+    wordLen := 0
 
     for i := 1; i <= 1000; i++ {
         word.Reset()
@@ -81,14 +82,18 @@ func main() {
 
         word.WriteString(hundreds[first])
 
-        if (first > 0 && second > 0) {
+        if (first > 0 && (second > 0 || third > 0)) {
             word.WriteString("and")
         }
 
         word.WriteString(tens[second])
         word.WriteString(ones[third])
+        wordLen = len(word.String())
+
         fmt.Println(word.String())
-        sum += len(word.String())
+        fmt.Println(wordLen)
+
+        sum += wordLen
     }
 
     fmt.Printf("The sum of the digits is: %v\n", sum)
