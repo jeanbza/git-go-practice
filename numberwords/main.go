@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-    inputFlt := 2521.04
+    inputFlt := 2520.04
     inputStr := strconv.FormatFloat(inputFlt, 'f', 2, 64)
     numberWords := [22]string{"", "", "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
                               "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
@@ -41,7 +41,9 @@ func main() {
                     } else {
                         sentence += specials[thisLetter-2]+" "
 
-                        sentence += numberWords[nextLetter+2]
+                        if (nextLetter > 0) {
+                            sentence += numberWords[nextLetter+2]
+                        }
                     }
                 case 2:
                     sentence += numberWords[c-46]+" hundred "
