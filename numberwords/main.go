@@ -7,15 +7,16 @@ import (
 )
 
 func main() {
-    inputFlt := 2519.04
+    inputFlt := 2521.04
     inputStr := strconv.FormatFloat(inputFlt, 'f', 2, 64)
     numberWords := [22]string{"", "", "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
                               "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
                               "eighteen", "nineteen"}
+    specials := [8]string{"twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety"}
     
     var sentence string
     var pos int
-    var lastTwo int64
+    var lastTwo, thisLetter, nextLetter int64
     var err error
 
     for i, c := range inputStr {
@@ -24,12 +25,24 @@ func main() {
 
             switch (pos) {
                 case 1:
-                    sentence += " and "
+                    sentence += "and "
                     
+                    thisLetter, err = strconv.ParseInt(string(inputStr[i]), 10, 64)
+                    checkError(err)
+
+                    nextLetter, err = strconv.ParseInt(string(inputStr[i+1]), 10, 64)
+                    checkError(err)
+
                     lastTwo, err = strconv.ParseInt(string(inputStr[i])+string(inputStr[i+1]), 10, 64)
                     checkError(err)
 
-                    sentence += numberWords[lastTwo+2]
+                    if (lastTwo < 20) {
+                        sentence += numberWords[lastTwo+2]
+                    } else {
+                        sentence += specials[thisLetter-2]+" "
+
+                        sentence += numberWords[nextLetter+2]
+                    }
                 case 2:
                     sentence += numberWords[c-46]+" hundred "
                 case 3:
